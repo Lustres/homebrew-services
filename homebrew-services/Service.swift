@@ -19,6 +19,15 @@ class Services {
   let stop_cmd = ["/usr/local/bin/brew", "services", "stop"]
   
   let list_cmd = ["/usr/local/bin/brew", "services", "list"]
+  
+  func start(_ name: String) {
+    (start_cmd + [name]).run()
+  }
+  
+  func stop(_ name: String) {
+    (stop_cmd + [name]).run()
+  }
+  
   func list() -> [String: Bool] {
     var services = [String: Bool]()
     

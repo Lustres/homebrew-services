@@ -20,12 +20,12 @@ class Services {
   
   let list_cmd = ["/usr/local/bin/brew", "services", "list"]
   
-  func start(_ name: String) {
-    (start_cmd + [name]).run()
+  func start(_ name: String) -> Bool {
+    return (start_cmd + [name]).run() != nil
   }
   
-  func stop(_ name: String) {
-    (stop_cmd + [name]).run()
+  func stop(_ name: String) -> Bool {
+    return (stop_cmd + [name]).run() != nil
   }
   
   func list() -> [String: Bool] {
@@ -53,7 +53,6 @@ fileprivate extension String {
 }
 
 fileprivate extension Array where Element == String {
-  @discardableResult
   func run() -> String? {
     
     let task = Process()

@@ -81,11 +81,30 @@ extension AppDelegate {
     sender.action = nil
     DispatchQueue.global(qos: .userInteractive).async {
       [unowned self] in
-      if sender.state == .offState {
-        self.services.start(sender.title)
-      } else if sender.state == .onState {
-        self.services.stop(sender.title)
+      
+      var actionName = ""
+      var r = false
+      
+      switch sender.state {
+      case .offState:
+        actionName = "Start"
+        r = self.services.start(sender.title)
+        
+      case .onState:
+        actionName = "Stop"
+        r = self.services.stop(sender.title)
+        
+      default:
+        break
       }
+      
+      
+      let post = (r ? succPost : failPost)(actionName, sender.title)
+      
+      DispatchQueue.main.async {
+        NSUserNotificationCenter.default.deliver(post)
+      }
+      
       self.fresh()
       
       DispatchQueue.main.sync {
@@ -93,6 +112,19 @@ extension AppDelegate {
       }
     }
   }
+}
+
+fileprivate func succPost(action: String, name: String) -> NSUserNotification {
+  let post = NSUserNotification()
+  post.title = "\(action) \(name) Succeeded"
+  return post;
+}
+
+fileprivate func failPost(action: String, name: String) -> NSUserNotification {
+  let post = NSUserNotification()
+  post.title = "\(action) \(name) Failed"
+  post.soundName = "Funk"
+  return post;
 }
 
 fileprivate func state(_ s: Bool) -> NSControl.StateValue {

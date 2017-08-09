@@ -78,7 +78,7 @@ extension AppDelegate {
   
   @objc func toggole(_ sender: NSMenuItem!) {
     debugPrint("[toggole]: \(sender.title) - \(sender.state)")
-    
+    sender.action = nil
     DispatchQueue.global(qos: .userInteractive).async {
       [unowned self] in
       if sender.state == .offState {
@@ -87,6 +87,10 @@ extension AppDelegate {
         self.services.stop(sender.title)
       }
       self.fresh()
+      
+      DispatchQueue.main.sync {
+        sender.action = #selector(AppDelegate.toggole)
+      }
     }
   }
 }

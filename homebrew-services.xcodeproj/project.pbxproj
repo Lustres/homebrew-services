@@ -10,6 +10,7 @@
 		027D4DE11F3B1FF500602020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D4DE01F3B1FF500602020 /* AppDelegate.swift */; };
 		027D4DE51F3B1FF500602020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027D4DE41F3B1FF500602020 /* Assets.xcassets */; };
 		027D4DE81F3B1FF500602020 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027D4DE61F3B1FF500602020 /* Main.storyboard */; };
+		027D4DF11F3B290600602020 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D4DF01F3B290600602020 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		027D4DE71F3B1FF500602020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		027D4DE91F3B1FF500602020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027D4DEA1F3B1FF500602020 /* homebrew_services.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = homebrew_services.entitlements; sourceTree = "<group>"; };
+		027D4DF01F3B290600602020 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				027D4DE01F3B1FF500602020 /* AppDelegate.swift */,
+				027D4DF01F3B290600602020 /* Service.swift */,
 				027D4DE41F3B1FF500602020 /* Assets.xcassets */,
 				027D4DE61F3B1FF500602020 /* Main.storyboard */,
 				027D4DE91F3B1FF500602020 /* Info.plist */,
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027D4DE11F3B1FF500602020 /* AppDelegate.swift in Sources */,
+				027D4DF11F3B290600602020 /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

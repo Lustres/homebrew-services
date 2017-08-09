@@ -7,6 +7,42 @@
 //
 
 import Foundation
+
+class Services {
+  
+  static let sharedInstance = Services()
+  
+  let brew_path = "/usr/local/bin/brew"
+  
+  let start_cmd = ["/usr/local/bin/brew", "services", "start"]
+  
+  let stop_cmd = ["/usr/local/bin/brew", "services", "stop"]
+  
+  let list_cmd = ["/usr/local/bin/brew", "services", "list"]
+  func list() -> [String: Bool] {
+    var services = [String: Bool]()
+    
+    guard let table = list_cmd.run()?.splitAfterTrim(splitBy: .newlines) else {
+      return services
+    }
+    
+    for i in 1..<table.count {
+      let tuple = table[i].components(separatedBy: .whitespaces)
+      services[tuple[0]] = tuple[1] == "started"
+    }
+    
+    debugPrint("[list]: \(services)")
+    
+    return services;
+  }
+}
+
+fileprivate extension String {
+  func splitAfterTrim(splitBy: CharacterSet) -> [String] {
+   return self.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: splitBy)
+  }
+}
+
 fileprivate extension Array where Element == String {
   @discardableResult
   func run() -> String? {

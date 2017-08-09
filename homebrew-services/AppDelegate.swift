@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     statusBarItem.menu = NSMenu()
     
+    statusBarItem.button?.image = #imageLiteral(resourceName: "StatusBarButtonIcon")
+      
     notifyToken = NotificationCenter.default
       .addObserver(forName: NSNotification.Name(rawValue: "NSMenuDidBeginTrackingNotification"),
                    object: nil,

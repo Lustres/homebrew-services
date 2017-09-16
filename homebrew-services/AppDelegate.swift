@@ -62,10 +62,10 @@ extension AppDelegate {
         for(serviceName, state) in dict {
           let item = NSMenuItem(title: serviceName,
                                 action: #selector(AppDelegate.toggole),
-                                keyEquivalent: "String")
+                                keyEquivalent: "")
           
           if state {
-            item.state = .onState
+            item.state = .on
           }
 
           menu.addItem(item)
@@ -86,11 +86,11 @@ extension AppDelegate {
       var r = false
       
       switch sender.state {
-      case .offState:
+      case .off:
         actionName = "Start"
         r = self.services.start(sender.title)
         
-      case .onState:
+      case .on:
         actionName = "Stop"
         r = self.services.stop(sender.title)
         
@@ -128,5 +128,5 @@ fileprivate func failPost(action: String, name: String) -> NSUserNotification {
 }
 
 fileprivate func state(_ s: Bool) -> NSControl.StateValue {
-  return s  ? .onState : .offState
+  return s  ? .on : .off
 }
